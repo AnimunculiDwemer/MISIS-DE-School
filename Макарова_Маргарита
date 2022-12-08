@@ -9,6 +9,8 @@ while True: #Бесконечный цикл, позволяющий игре з
         for k in range(len(mas[i])):
             print(mas[i][k], end = " ")
         print()
+        
+        туц-туц
 
     def CheckX(): #Проверка выигрыша X
         if (mas[0][0]=="X"and mas[0][1]=="X"and mas[0][2]=="X"):

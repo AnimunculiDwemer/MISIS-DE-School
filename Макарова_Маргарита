@@ -11,6 +11,7 @@ while True: #Бесконечный цикл, позволяющий игре з
         print()
         
         туц-туц
+        add new code here!
 
     def CheckX(): #Проверка выигрыша X
         if (mas[0][0]=="X"and mas[0][1]=="X"and mas[0][2]=="X"):

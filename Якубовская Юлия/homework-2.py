@@ -20,38 +20,44 @@ def view():
 def checkvictory():
 
     i = 0
-
     while i < 3:
 
         if a[i][0] == a[i][1] and a[i][2]:
+
             if a[i][0] == 1:
                 print("Cross wins")
                 f.write("Cross wins\n")
                 return 1
-            elif a[i][0] == 2:
-                print("Naught wins")
-                f.write("Naught wins\n")
-                return 2
-        elif a[0][i] == a[1][i] and a[2][i]:
-            if a[0][i] == 1:
-                print("Cross wins")
-                f.write("Cross wins\n")
-                return 1
-            elif a[0][i] == 2:
+
+            if a[i][0] == 2:
                 print("Naught wins")
                 f.write("Naught wins\n")
                 return 2
 
+        if a[0][i] == a[1][i] and a[2][i]:
+
+            if a[0][i] == 1:
+                print("Cross wins")
+                f.write("Cross wins\n")
+                return 1
+
+            if a[0][i] == 2:
+                print("Naught wins")
+                f.write("Naught wins\n")
+                return 2
         i += 1
+
     if (a[0][0] == a[1][1] and a[0][0] == a[2][2]) or (a[0][2] == a[1][1] and a[0][2] == a[2][0]):
         if a[1][1] == 1:
             print("Cross wins")
             f.write("Cross wins\n")
             return 1
-        elif a[1][1] == 2:
+
+        if a[1][1] == 2:
             print("Naught wins")
             f.write("Naught wins\n")
             return 2
+
     return 0
 
 
@@ -61,16 +67,16 @@ for i in range(3):
 
 f = open('log.txt', 'r')
 lines = f.readlines()
-if len(lines)== 0:
+if len(lines) == 0:
     lines.append("0:0")
-print(lines[0])
-line = lines[-1].split(":")
-xwin = int(line[0])
-owin = int(line[1])
+score = lines[-1].split(":")
+xwin = int(score[0])
+owin = int(score[1])
 f.close()
-f = open('log.txt', 'a')
 
 hod = 0
+f = open('log.txt', 'a')
+
 while True:
     print()
 
@@ -88,15 +94,15 @@ while True:
 
     except ValueError:
 
-        print("Необходимо ввести цифру от 0 до 2")
+        print("You must enter a number from 0 to 2")
 
-        continue  # исли ввели не числа, идем к началу цикла
+        continue
 
-    if x >= 0 and x <= 2 and y >= 0 and y <= 2 and a[x][y] == 0:
+    if 0 <= x <= 2 and 0 <= y <= 2 and a[x][y] == 0:
 
         if hod % 2 == 0:
             a[x][y] = 1
-            s = "Cross on " + str(x)+ " " + str(y)+"\n"
+            s = "Cross on " + str(x) + " " + str(y)+"\n"
             f.write(s)
 
         else:
@@ -106,7 +112,7 @@ while True:
 
     else:
 
-        print("Неверно введены координаты")
+        print("Wrong coordinates")
 
         continue
 
@@ -117,23 +123,25 @@ while True:
     view()
 
     if win == 1:
-        s = str(xwin+1)+":"+str(owin)+"\n"
-        print(s)
-        f.write(s)
+        score = str(xwin + 1) + ":" + str(owin) + "\n"
+        print(score)
+        f.write(score)
         f.close()
         break
+
     if win == 2:
-        s = str(xwin) + ":" + str(owin+1)+"\n"
-        print(s)
-        f.write(s)
+        score = str(xwin) + ":" + str(owin + 1) + "\n"
+        print(score)
+        f.write(score)
         f.close()
         break
 
     if hod == 9:
-        s = str(xwin) + ":" + str(owin)+"\n"
-        f.write(s)
-        print("НИЧЬЯ")
-        print(s)
+        score = str(xwin) + ":" + str(owin) + "\n"
+        f.write(score)
+        print("Draw")
+        print(score)
         f.write("Draw\n")
         f.close()
         break
+
